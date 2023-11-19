@@ -1,0 +1,13 @@
+[
+    { "id": "1", "name": "Josh", "imgUrl": "user1.png" },
+    { "id": "2", "name": "Andrew", "imgUrl": "user2.png" },
+    { "id": "3", "name": "Camille", "imgUrl": "user3.png" },
+    { "id": "4", "name": "Marselle", "imgUrl": "user4.png" },
+    { "id": "5", "name": "Piter", "imgUrl": "user5.png" },
+    { "id": "6", "name": "Can", "imgUrl": "user9.png" },
+    { "id": "7", "name": "Iloveanime", "imgUrl": "user7.png" },
+    { "id": "8", "name": "Diself", "imgUrl": "user8.png" },
+    { "id": "9", "name": "Gartor", "imgUrl": "user9.png" },
+    { "id": "10", "name": "Camilr", "imgUrl": "user10.png" }
+
+]
