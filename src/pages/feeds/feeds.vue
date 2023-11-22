@@ -18,7 +18,12 @@
             </template>
         </Topline>
     </div>
-    <Post />
+    <Post>
+        <template #postContent>
+            <span class="post-content_bold">Javascript</span>
+            framework for building interactive web applications ⚡
+        </template>
+    </Post>
 </template>
 
 <!-- SCRIPT -->
@@ -65,5 +70,9 @@ export default {
 .stories-item {
     width: 92px;
     height: 116px;
+}
+.post-content_bold {
+  font-weight: 700;
+  line-height: 22px;
 }
 </style>

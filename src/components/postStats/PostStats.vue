@@ -1,16 +1,16 @@
 <template>
   <div class="post__bottom">
     <div class="post__bottom-star">
-      <div @click="addCountStar" class="post__bottom-star__left">
+      <div class="post__bottom-star__left">
         <Icon class="star" name="Star" />
         <span class="star__left-text">Star</span>
       </div>
       <div class="post__bottom-star__right">
-        <p class="star__right-text">{{ countStar }}k</p>
+        <p class="star__right-text">{{ star }}k</p>
       </div>
     </div>
     <div class="post__bottom-fork">
-      <div @click="addCountFork" class="post__bottom-fork__left">
+      <div class="post__bottom-fork__left">
         <Icon class="star" name="Fork" />
         <span class="fork__left-text">Fork</span>
       </div>
@@ -24,24 +24,12 @@
 <!-- SCRIPT -->
 <script>
 import Icon from '@/icons/Icon.vue'
+
 export default {
-  name: 'PostButton',
+  name: 'PostStats',
+  props: ['star', 'fork'],
   components: {
     Icon
-  },
-  data () {
-    return {
-      countStar: 156,
-      fork: 4
-    }
-  },
-  methods: {
-    addCountStar () {
-      this.countStar++
-    },
-    addCountFork () {
-      this.fork++
-    }
   }
 }
 </script>

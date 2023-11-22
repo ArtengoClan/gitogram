@@ -1,23 +1,17 @@
 <template>
   <div class="c-post">
     <PostHeader headerName="Joshua_l" headerImg="user1.png" />
-    <PostContent>
-      <template #postContent>
         <div class="post__content">
           <div class="post__content-wrapper">
             <div class="post__content-middle">
               <p class="post__content-middle-top">Vue.js</p>
               <p class="post__content-middle-center">
-                <span>JavaScript</span>
-                framework for building interactive web applications ⚡
+                <slot name="postContent" />
               </p>
             </div>
-            <PostButton />
+            <PostStats star="156" fork="4" />
           </div>
         </div>
-      </template>
-    </PostContent>
-
     <Feed />
   </div>
 </template>
@@ -26,15 +20,13 @@
 <script>
 import Feed from '@/components/feed/Feed.vue'
 import PostHeader from '@/components/postHeader/PostHeader.vue'
-import PostButton from '@/components/postButton/PostButton.vue'
-import PostContent from '@/components/postContent/PostContent.vue'
+import PostStats from '@/components/postStats/PostStats'
 export default {
   name: 'Post',
   components: {
     Feed,
     PostHeader,
-    PostButton,
-    PostContent
+    PostStats
   }
 }
 </script>
@@ -62,9 +54,5 @@ export default {
   font-size: 26px;
   font-weight: 700;
   line-height: 28px;
-}
-.post__content-middle-center span {
-  font-weight: 700;
-  line-height: 22px;
 }
 </style>

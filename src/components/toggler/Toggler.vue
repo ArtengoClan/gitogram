@@ -12,6 +12,7 @@
 import icon from '@/icons/Icon.vue'
 export default {
   name: 'Toggler',
+  emits: ['onToggle'],
   components: {
     icon
   },
