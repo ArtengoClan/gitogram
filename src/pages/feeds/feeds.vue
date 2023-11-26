@@ -11,17 +11,18 @@
             </template>
             <template #content>
                 <ul class="stories">
-                    <li class="stories-item" v-for="story in stories" :key="story.id">
-                        <StoryUserItem @onPress="handlePress(story.id)" :avatar="story.imgUrl" :username="story.name" />
+                    <li class="stories-item" v-for="item in items" :key="item.id">
+                        <StoryUserItem @onPress="handlePress(item.id)" :avatar="item.owner.avatar_url" :username="item.owner.login" />
                     </li>
                 </ul>
             </template>
         </Topline>
     </div>
-    <Post>
+    <Post v-for="item in items" :key="item.id" :star="item.stargazers_count" :fork="item.forks_count" :username="item.owner.login" :userImg="item.owner.avatar_url">
         <template #postContent>
-            <span class="post-content_bold">Javascript</span>
-            framework for building interactive web applications ⚡
+            <span class="post-content_bold">{{ item.language }}</span>
+            {{ item.description }}
+            <!-- framework for building interactive web applications ⚡ -->
         </template>
     </Post>
 </template>
@@ -33,6 +34,7 @@ import StoryUserItem from '@/components/storyUserItem/StoryUserItem.vue'
 import Post from '@/components/post/Post.vue'
 import Icon from '@/icons/Icon.vue'
 import stories from './data.json'
+import * as api from '../../api'
 export default {
   name: 'feeds',
   components: {
@@ -43,7 +45,29 @@ export default {
   },
   data () {
     return {
-      stories
+      stories,
+      items: []
+    }
+  },
+  methods: {
+    getFreedData (item) {
+      return {
+        title: item.title,
+        description: item.description,
+        username: item.owner.login,
+        stars: item.stargazers_count
+        // forks: item.forks_count
+        // language: item.language
+        // avatarUrl: item.owner.avatar_url
+      }
+    }
+  },
+  async created () {
+    try {
+      const { data } = await api.trandings.getTrendings()
+      this.items = data.items
+    } catch (error) {
+      console.log(error)
     }
   }
 }

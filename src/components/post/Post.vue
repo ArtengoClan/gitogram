@@ -1,6 +1,6 @@
 <template>
   <div class="c-post">
-    <PostHeader headerName="Joshua_l" headerImg="user1.png" />
+    <PostHeader :headerName="username" :headerImg="userImg" />
         <div class="post__content">
           <div class="post__content-wrapper">
             <div class="post__content-middle">
@@ -9,7 +9,7 @@
                 <slot name="postContent" />
               </p>
             </div>
-            <PostStats star="156" fork="4" />
+            <PostStats :star="star"  :fork="fork" />
           </div>
         </div>
     <Feed />
@@ -23,6 +23,20 @@ import PostHeader from '@/components/postHeader/PostHeader.vue'
 import PostStats from '@/components/postStats/PostStats'
 export default {
   name: 'Post',
+  props: {
+    username: {
+      type: String
+    },
+    userImg: {
+      type: String
+    },
+    star: {
+      type: String
+    },
+    fork: {
+      type: String
+    }
+  },
   components: {
     Feed,
     PostHeader,
@@ -36,8 +50,10 @@ export default {
 .c-post {
   max-width: 979px;
   margin: 0 auto;
+  margin-bottom: 24px;
 }
 .post__content {
+  margin-top: 16px;
   margin-bottom: 18px;
   border: 1px solid #f1f1f1;
   box-shadow: 0px 4px 40px 0px #00000012;

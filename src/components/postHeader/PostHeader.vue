@@ -1,6 +1,7 @@
 <template>
     <div class="post__header">
-      <img class="post__header-img" :src="require(`@/assets/${headerImg}`)" />
+      <!-- <img class="post__header-img" :src="require(`@/assets/${headerImg}`)" /> -->
+        <img class="post__header-img" :src="headerImg" />
       <p class="post__header-text">{{ headerName }}</p>
     </div>
 </template>
@@ -28,11 +29,13 @@ export default {
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 16px;
+  /* margin-bottom: 16px; */
 }
 .post__header-img {
   width: 44px;
   height: 44px;
+  object-fit: contain;
+  border-radius: 50%;
 }
 .post__header-text {
   font-size: 18px;

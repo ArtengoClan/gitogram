@@ -1,7 +1,7 @@
 <template>
     <button class="c-story-user-item" @click="$emit('onPress')">
         <div class="avatar">
-            <img :src="avatar" class="img" alt="username avatar" />
+          <img :src="avatar" class="img" alt="username avatar" />
         </div>
         <div class="username">{{ username }}</div>
     </button>
@@ -28,20 +28,20 @@ export default {
 <!-- STYLE -->
 <style scoped>
 .c-story-user-item {
-  width: 100%;
-  height: 100%;
+  width: 92px;
+  height: 116px;
 }
 .avatar {
   margin-bottom: 10px;
   border: 2px solid #a6328d;
   border-radius: 50%;
   transition: all 0.3s linear;
-}
-.c-story-user-item:hover .avatar {
-  border: none;
+  overflow: hidden;
 }
 .img {
+  height: 80px;
+  width: 80px;
+  object-fit: contain;
   padding: 6px;
-  border-radius: 50%;
 }
 </style>

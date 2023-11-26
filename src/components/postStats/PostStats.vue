@@ -6,7 +6,7 @@
         <span class="star__left-text">Star</span>
       </div>
       <div class="post__bottom-star__right">
-        <p class="star__right-text">{{ star }}k</p>
+        <p class="star__right-text">{{ star }}</p>
       </div>
     </div>
     <div class="post__bottom-fork">
