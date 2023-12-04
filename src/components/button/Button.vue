@@ -24,9 +24,10 @@ export default {
 
 <style scoped>
 .c-button {
-    width: 270px;
-    height: 44px;
-    padding: 11px 109px;
+    width: 220px;
+    height: 35px;
+    /* margin: 19px 0 25px; */
+    padding: 8px 87px;
     color: white;
     font-size: 16px;
     font-weight: 700;

@@ -1,4 +1,5 @@
 <template>
+  <Stories />
     <div class="topline">
         <Topline>
             <template #headline>
@@ -22,7 +23,6 @@
         <template #postContent>
             <span class="post-content_bold">{{ item.language }}</span>
             {{ item.description }}
-            <!-- framework for building interactive web applications ⚡ -->
         </template>
     </Post>
 </template>
@@ -33,6 +33,7 @@ import Topline from '@/components/topline/Topline.vue'
 import StoryUserItem from '@/components/storyUserItem/StoryUserItem.vue'
 import Post from '@/components/post/Post.vue'
 import Icon from '@/icons/Icon.vue'
+import Stories from '@/components/stories/Stories.vue'
 import stories from './data.json'
 import * as api from '../../api'
 export default {
@@ -41,7 +42,8 @@ export default {
     Topline,
     Icon,
     StoryUserItem,
-    Post
+    Post,
+    Stories
   },
   data () {
     return {
@@ -60,6 +62,10 @@ export default {
         // language: item.language
         // avatarUrl: item.owner.avatar_url
       }
+    },
+    handlePress (id) {
+      // this.$router.push(`/gitogram/dist/stories/${id}`)
+      this.$router.push({ name: 'stories', params: { initialSlide: id } })
     }
   },
   async created () {

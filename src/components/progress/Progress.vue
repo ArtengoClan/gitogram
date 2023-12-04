@@ -19,14 +19,14 @@ export default {
     }
   },
   mounted () {
-    this.$nextTick(() => {
-      this.active = true
-    })
-    this.$refs.indicator.addEventListener('transitionend', this.emitOnFinish)
-  },
-  beforeUnmount () {
-    this.$refs.indicator.removeEventListener('transitionend', this.emitOnFinish)
+    // this.$nextTick(() => {
+    this.active = true
+    // })
+    // this.$refs.indicator.addEventListener('transitionend', this.emitOnFinish)
   }
+  // beforeUnmount () {
+  //   this.$refs.indicator.removeEventListener('transitionend', this.emitOnFinish)
+  // }
 }
 </script>
 
@@ -40,7 +40,8 @@ export default {
 }
 
 .c-progress.active .indicator {
-    width: 100%;
+    /* width: 100%; */
+    animation: animate-progress 5s linear forwards;
 }
 .indicator {
     position: absolute;
@@ -49,6 +50,11 @@ export default {
     left: 0;
     width: 0;
     background: #31ae54;
-    transition: 5s;
+    /* transition: 5s; */
+}
+
+@keyframes animate-progress {
+  0% {width: 0;}
+  100% {width: 100%;}
 }
 </style>
