@@ -1,5 +1,5 @@
 <template>
-  <Stories />
+  <!-- <Stories /> -->
     <div class="topline">
         <Topline>
             <template #headline>
@@ -33,7 +33,7 @@ import Topline from '@/components/topline/Topline.vue'
 import StoryUserItem from '@/components/storyUserItem/StoryUserItem.vue'
 import Post from '@/components/post/Post.vue'
 import Icon from '@/icons/Icon.vue'
-import Stories from '@/components/stories/Stories.vue'
+// import Stories from '@/components/stories/Stories.vue'
 import stories from './data.json'
 import * as api from '../../api'
 export default {
@@ -42,8 +42,8 @@ export default {
     Topline,
     Icon,
     StoryUserItem,
-    Post,
-    Stories
+    Post
+    // Stories
   },
   data () {
     return {

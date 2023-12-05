@@ -1,5 +1,5 @@
 <template>
-    <div class="c-progress" :class={active}>
+    <div class="c-progress" :class={active} >
         <div ref="indicator" class="indicator"></div>
     </div>
 </template>
@@ -9,8 +9,11 @@ export default {
   name: 'Progress',
   data () {
     return {
-      active: false
+      // active: false
     }
+  },
+  props: {
+    active: Boolean
   },
   emits: ['onFinish'],
   methods: {
@@ -19,14 +22,14 @@ export default {
     }
   },
   mounted () {
-    // this.$nextTick(() => {
-    this.active = true
-    // })
-    // this.$refs.indicator.addEventListener('transitionend', this.emitOnFinish)
+  //   this.$nextTick(() => {
+  //   this.active = true
+  //   })
+    this.$refs.indicator.addEventListener('animationend', this.emitOnFinish)
+  },
+  beforeUnmount () {
+    this.$refs.indicator.removeEventListener('animationend', this.emitOnFinish)
   }
-  // beforeUnmount () {
-  //   this.$refs.indicator.removeEventListener('transitionend', this.emitOnFinish)
-  // }
 }
 </script>
 
@@ -40,7 +43,7 @@ export default {
 }
 
 .c-progress.active .indicator {
-    /* width: 100%; */
+     /* width: 100%; */
     animation: animate-progress 5s linear forwards;
 }
 .indicator {
@@ -50,7 +53,7 @@ export default {
     left: 0;
     width: 0;
     background: #31ae54;
-    /* transition: 5s; */
+    transition: 5s ;
 }
 
 @keyframes animate-progress {
