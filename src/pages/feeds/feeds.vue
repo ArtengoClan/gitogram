@@ -12,17 +12,17 @@
             </template>
             <template #content>
                 <ul class="stories">
-                    <li class="stories-item" v-for="item in items" :key="item.id">
-                        <StoryUserItem @onPress="handlePress(item.id)" :avatar="item.owner.avatar_url" :username="item.owner.login" />
+                    <li class="stories-item" v-for="trending in trendings" :key="trending.id">
+                        <StoryUserItem @onPress="handlePress(trending.id)" :avatar="trending.owner?.avatar_url" :username="trending.owner?.login" />
                     </li>
                 </ul>
             </template>
         </Topline>
     </div>
-    <Post v-for="item in items" :key="item.id" :star="item.stargazers_count" :fork="item.forks_count" :username="item.owner.login" :userImg="item.owner.avatar_url">
+    <Post v-for="trending in trendings" :key="trending.id" :star="trending.stargazers_count" :fork="trending.forks_count" :username="trending.owner?.login" :userImg="trending.owner?.avatar_url">
         <template #postContent>
-            <span class="post-content_bold">{{ item.language }}</span>
-            {{ item.description }}
+            <span class="post-content_bold">{{ trending.language }}</span>
+            {{ trending.description }}
         </template>
     </Post>
 </template>
@@ -35,7 +35,8 @@ import Post from '@/components/post/Post.vue'
 import Icon from '@/icons/Icon.vue'
 // import Stories from '@/components/stories/Stories.vue'
 import stories from './data.json'
-import * as api from '../../api'
+// import * as api from '../../api'
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'feeds',
   components: {
@@ -47,31 +48,28 @@ export default {
   },
   data () {
     return {
-      stories,
-      items: []
+      stories
+      // items: []
     }
   },
   methods: {
-    getFreedData (item) {
-      return {
-        title: item.title,
-        description: item.description,
-        username: item.owner.login,
-        stars: item.stargazers_count
-        // forks: item.forks_count
-        // language: item.language
-        // avatarUrl: item.owner.avatar_url
-      }
-    },
+    ...mapActions({
+      fetchTrendings: 'trendings/fetchTrendings'
+    }),
     handlePress (id) {
-      // this.$router.push(`/gitogram/dist/stories/${id}`)
       this.$router.push({ name: 'stories', params: { initialSlide: id } })
     }
   },
+  computed: {
+    ...mapState({
+      trendings: state => state.trendings.trendings.data
+    })
+  },
   async created () {
     try {
-      const { data } = await api.trandings.getTrendings()
-      this.items = data.items
+      // const { data } = await api.trandings.getTrendings()
+      // this.items = data.items
+      await this.fetchTrendings()
     } catch (error) {
       console.log(error)
     }

@@ -5,7 +5,7 @@
                 <button class="logo">
                     <h1 class="logo__title">Gitogram /</h1>
                 </button>
-                <button class="close-btn" @click="$router.push('/gitogram/dist/')">
+                <button class="close-btn" @click="$router.push({name: 'feeds'})">
                     <Icon name="Close"/>
                 </button>
             </div>

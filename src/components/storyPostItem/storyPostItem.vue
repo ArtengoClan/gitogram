@@ -91,6 +91,12 @@ export default {
   padding-bottom: 12px;
   box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
 }
+.user {
+  margin-left: 9px;
+}
+.progress {
+  margin-bottom: 12px;
+}
 .content {
   position: relative;
   /* padding-left: 18px; */

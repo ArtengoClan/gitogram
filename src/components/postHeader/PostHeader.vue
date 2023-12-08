@@ -32,8 +32,8 @@ export default {
   /* margin-bottom: 16px; */
 }
 .post__header-img {
-  width: 44px;
-  height: 44px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
   border-radius: 50%;
 }

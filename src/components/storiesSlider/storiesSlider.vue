@@ -1,7 +1,6 @@
 <template>
     <div class="c-stories-slider">
         <div class="stories-container">
-          <pre>{{ console.log(trendings) }}</pre>
           <ul class="stories" ref="slider">
             <li ref="item" class="stories-item" v-for="(trending, ndx) in trendings" :key="trending.id">
               <storyPostItem
@@ -95,13 +94,14 @@ export default {
     }
   },
   async mounted () {
-    await this.fetchTrendings()
-    await this.loadReadme()
-
     if (this.initialSlide) {
       const ndx = this.trendings.findIndex(item => item.id === this.initialSlide)
       await this.handleSlide(ndx)
     }
+    if (this.trendings === undefined) {
+      await this.fetchTrendings()
+    }
+    await this.loadReadme()
   }
 }
 </script>
